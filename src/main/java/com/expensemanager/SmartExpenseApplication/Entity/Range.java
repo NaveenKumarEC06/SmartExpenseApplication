@@ -1,6 +1,4 @@
 package com.expensemanager.SmartExpenseApplication.Entity;
 
-public class Subscription
-{
 
-}
+public record Range(double initialPrice,double finalPrice){}

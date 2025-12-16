@@ -13,33 +13,32 @@ import java.util.UUID;
 @Service
 public class UserService {
 
-    HashMap<Long, User> map = new HashMap<>();
+    HashMap<Long, User> userList = new HashMap<>();
 
-    public ResponseEntity<String> addUser(Long mobile, User user) {
-        if (map.containsKey(mobile) == false) {
+    public ResponseEntity<String> addUser(Long mobile, User user)
+    {
+        if (userList.containsKey(mobile) == false)
+        {
             UUID uuid = UUID.randomUUID();
-            String idAndName = uuid.toString() + " " + user.getName();
-            user.setName(idAndName);
-            map.put(mobile, user);
-        } else {
-            return ResponseEntity.ok("DUPLICATE USERS NOT ALLOWED !");
+            String id = uuid.toString();
+            user.setId(id);
+            userList.put(mobile, user);
         }
+        else
+            return ResponseEntity.ok("DUPLICATE USERS NOT ALLOWED !");
         return ResponseEntity.ok("USER ADDED SUCCESSFULLY !");
     }
 
     public Collection<User> viewAllUsers() {
-        Collection<User> temp = map.values();
+        Collection<User> temp = userList.values();
         return temp;
     }
 
     public String getUserByMobile(Long mobile)
     {
-        if(map.containsKey(mobile))
-        {
-            return map.get(mobile).toString();
-        }
-        else {
-            return "NOT FOUND !!";        }
-
+        if(userList.containsKey(mobile))
+            return userList.get(mobile).toString();
+        else
+            return "NOT FOUND !!";
     }
 }

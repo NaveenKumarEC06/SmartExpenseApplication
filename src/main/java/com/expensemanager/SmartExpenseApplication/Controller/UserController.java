@@ -16,17 +16,17 @@ public class UserController
 {
     @Autowired
     UserService userService;
-    @PostMapping("/add")
+    @PostMapping("/Add")
     public ResponseEntity<String> addUser(@RequestBody User user)
     {
         return userService.addUser(user.getMobile(),user);
     }
-    @GetMapping("/view")
+    @GetMapping("/View")
     public Collection<User> viewAllUsers()
     {
         return userService.viewAllUsers();
     }
-    @GetMapping("get/{mobile}")
+    @GetMapping("Get/{mobile}")
     public String getUserByMobile(@PathVariable Long mobile)
     {
         return userService.getUserByMobile(mobile);

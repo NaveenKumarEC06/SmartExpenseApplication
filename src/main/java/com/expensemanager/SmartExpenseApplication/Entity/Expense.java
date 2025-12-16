@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Expense {
-    private double exp;
+    private String category;
+    private double expense;
 }

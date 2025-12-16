@@ -6,7 +6,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+
 public class User {
+    private String id;
     private String name;
     private long mobile;
 }
