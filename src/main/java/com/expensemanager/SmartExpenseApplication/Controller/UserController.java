@@ -27,8 +27,12 @@ public class UserController
         return userService.viewAllUsers();
     }
     @GetMapping("Get/{mobile}")
-    public String getUserByMobile(@PathVariable Long mobile)
+    public ResponseEntity<User> getUserByMobile(@PathVariable Long mobile)
     {
-        return userService.getUserByMobile(mobile);
+        User user = userService.getUserByMobile(mobile);
+        if( user != null )
+            return ResponseEntity.ok(user);
+        else
+            return ResponseEntity.notFound().build();
     }
 }

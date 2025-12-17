@@ -2,7 +2,9 @@ package com.expensemanager.SmartExpenseApplication.Service;
 
 
 import com.expensemanager.SmartExpenseApplication.Entity.User;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -34,11 +36,21 @@ public class UserService {
         return temp;
     }
 
-    public String getUserByMobile(Long mobile)
+    public User getUserByMobile(Long mobile)
+    {
+        /*if(userList.containsKey(mobile))
+            return (userList.get(mobile).getId()+"\n"+userList.get(mobile).getName()).toString();
+        else
+            return "MATCH NOT FOUND !!";*/
+        System.out.println(userList.get(mobile));
+        return userList.get(mobile);
+    }
+
+    public User getUser(Long mobile)
     {
         if(userList.containsKey(mobile))
-            return userList.get(mobile).toString();
+            return userList.get(mobile);
         else
-            return "NOT FOUND !!";
+            return null;
     }
 }
